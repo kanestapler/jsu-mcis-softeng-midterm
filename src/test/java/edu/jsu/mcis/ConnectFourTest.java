@@ -4,7 +4,8 @@ import org.junit.*;
 import static org.junit.Assert.*;
 
 public class ConnectFourTest{
-	@Test
+    
+    @Test
     public void testNewGameBoardShouldBeEmpty() {
         ConnectFour c = new ConnectFour();
         for(int col = 0; col < 7; col++) {
@@ -24,9 +25,28 @@ public class ConnectFourTest{
         assertEquals(2, c.getHeightOfColumn(2));
     }
     
-    @Test(expected=ColumnFullException.class)
+    @Test(expected=ConnectFour.ColumnFullException.class)
     public void testDroppingOnAFullColumnShouldThrowException() {
-        
+        ConnectFour c = new ConnectFour();
+        c.dropToken(2);
+        assertEquals(ConnectFour.Location.RED, c.getTopOfColumn(2));
+        assertEquals(1, c.getHeightOfColumn(2));
+        c.dropToken(2);
+        assertEquals(ConnectFour.Location.BLACK, c.getTopOfColumn(2));
+        assertEquals(2, c.getHeightOfColumn(2));
+        c.dropToken(2);
+        assertEquals(ConnectFour.Location.RED, c.getTopOfColumn(2));
+        assertEquals(3, c.getHeightOfColumn(2));
+        c.dropToken(2);
+        assertEquals(ConnectFour.Location.BLACK, c.getTopOfColumn(2));
+        assertEquals(4, c.getHeightOfColumn(2));
+        c.dropToken(2);
+        assertEquals(ConnectFour.Location.RED, c.getTopOfColumn(2));
+        assertEquals(5, c.getHeightOfColumn(2));
+        c.dropToken(2);
+        assertEquals(ConnectFour.Location.BLACK, c.getTopOfColumn(2));
+        assertEquals(6, c.getHeightOfColumn(2));
+        c.dropToken(2);
     }
     
 }
